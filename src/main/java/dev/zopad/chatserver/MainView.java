@@ -16,6 +16,7 @@ import dev.zopad.chatserver.service.ChatService;
 import dev.zopad.model.Message;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -96,7 +97,7 @@ public class MainView extends VerticalLayout {
         sendButton.addClickShortcut(Key.ENTER);
 
         sendButton.addClickListener(click -> {
-            chatService.sendMessage(new Message(username, messageField.getValue(), new Date()));
+            chatService.sendMessage(new Message(username, messageField.getValue(), Calendar.getInstance().getTime()));
             messageField.clear();
             messageField.focus();
         });
